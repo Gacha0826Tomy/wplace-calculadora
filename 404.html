@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlLang">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página no encontrada | WPlace Calculator</title>
-    <meta name="description" content="La página que buscas no existe. Regresa a WPlace Calculator para calcular el tiempo de recarga de tus píxeles.">
+    <title data-es="404 - Página no encontrada | WPlace Calculator" data-en="404 - Page not found | WPlace Calculator">404 - Página no encontrada | WPlace Calculator</title>
+    <meta name="description" data-es="La página que buscas no existe. Regresa a WPlace Calculator para calcular el tiempo de recarga de tus píxeles." data-en="The page you're looking for doesn't exist. Return to WPlace Calculator to calculate your pixel recharge time." content="La página que buscas no existe. Regresa a WPlace Calculator para calcular el tiempo de recarga de tus píxeles.">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bilingual.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,6 +20,14 @@
         <div class="orb orb-3"></div>
     </div>
 
+    <!-- Language Toggle Button -->
+    <div class="language-toggle">
+        <button id="langToggle" class="lang-btn" title="Switch Language / Cambiar idioma">
+            <span class="lang-flag">🌐</span>
+            <span class="lang-text" data-es="EN" data-en="ES">EN</span>
+        </button>
+    </div>
+
     <div class="error-container">
         <div class="error-content">
             <div class="error-code">404</div>
@@ -29,9 +38,9 @@
                 <span class="visual-element">🤔</span>
             </div>
 
-            <h1 class="error-title">Píxel no encontrado</h1>
+            <h1 class="error-title" data-es="Píxel no encontrado" data-en="Pixel not found">Píxel no encontrado</h1>
             
-            <p class="error-message">
+            <p class="error-message" data-es="Esta página se ha desvanecido en el vacío digital. Pero no te preocupes, puedes regresar a calcular tus píxeles en tiempo récord." data-en="This page has vanished into the digital void. But don't worry, you can go back to calculating your pixels in record time.">
                 Esta página se ha desvanecido en el vacío digital. 
                 Pero no te preocupes, puedes regresar a calcular tus píxeles 
                 en tiempo récord.
@@ -40,43 +49,43 @@
             <div class="error-actions">
                 <a href="/" class="btn btn-primary">
                     <span>⚡</span>
-                    Volver al Calculator
+                    <span data-es="Volver al Calculator" data-en="Back to Calculator">Volver al Calculator</span>
                 </a>
                 <a href="javascript:history.back()" class="btn btn-secondary">
                     <span>↩️</span>
-                    Página Anterior
+                    <span data-es="Página Anterior" data-en="Previous Page">Página Anterior</span>
                 </a>
             </div>
 
             <div class="helpful-links">
-                <h3>Enlaces útiles</h3>
+                <h3 data-es="Enlaces útiles" data-en="Useful links">Enlaces útiles</h3>
                 <div class="links-grid">
                     <a href="/" class="link-item">
                         <span class="link-icon">🏠</span>
                         <div>
-                            <div>Inicio</div>
-                            <small style="opacity: 0.7;">Página principal</small>
+                            <div data-es="Inicio" data-en="Home">Inicio</div>
+                            <small style="opacity: 0.7;" data-es="Página principal" data-en="Main page">Página principal</small>
                         </div>
                     </a>
                     <a href="/?pixels=100" class="link-item">
                         <span class="link-icon">🎯</span>
                         <div>
-                            <div>Ejemplo</div>
-                            <small style="opacity: 0.7;">Calcular 100 píxeles</small>
+                            <div data-es="Ejemplo" data-en="Example">Ejemplo</div>
+                            <small style="opacity: 0.7;" data-es="Calcular 100 píxeles" data-en="Calculate 100 pixels">Calcular 100 píxeles</small>
                         </div>
                     </a>
                     <a href="/#" class="link-item" onclick="showInfo('about')">
                         <span class="link-icon">ℹ️</span>
                         <div>
-                            <div>Acerca de</div>
-                            <small style="opacity: 0.7;">Información del proyecto</small>
+                            <div data-es="Acerca de" data-en="About">Acerca de</div>
+                            <small style="opacity: 0.7;" data-es="Información del proyecto" data-en="Project information">Información del proyecto</small>
                         </div>
                     </a>
                     <a href="https://github.com/Gacha0826Tomy/wplace-calculadora" class="link-item" target="_blank">
                         <span class="link-icon">💻</span>
                         <div>
                             <div>GitHub</div>
-                            <small style="opacity: 0.7;">Código fuente</small>
+                            <small style="opacity: 0.7;" data-es="Código fuente" data-en="Source code">Código fuente</small>
                         </div>
                     </a>
                 </div>
@@ -88,7 +97,7 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="infoModal">
             <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">Información</h3>
+                <h3 class="modal-title" id="modalTitle" data-es="Información" data-en="Information">Información</h3>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body" id="modalBody">
@@ -98,5 +107,6 @@
     </div>
 
     <script src="404.js"></script>
+    <script src="bilingual.js"></script>
 </body>
 </html>

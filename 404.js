@@ -1,8 +1,22 @@
-// Auto-redirect timer (optional)
+// Auto-redirect timer (optional) - Enhanced with bilingual support
 let redirectTimer = 15;
 let timerInterval;
 
+// Bilingual messages for 404 page
+const redirectMessages = {
+    es: {
+        redirecting: 'Redirigiendo en {timer}s',
+        button: 'Cancelar'
+    },
+    en: {
+        redirecting: 'Redirecting in {timer}s',
+        button: 'Cancel'
+    }
+};
+
 function startRedirectTimer() {
+    const currentLang = window.bilingualSystem ? window.bilingualSystem.currentLanguage : 'es';
+    
     const timerElement = document.createElement('div');
     timerElement.style.cssText = `
         position: fixed;
@@ -22,10 +36,13 @@ function startRedirectTimer() {
     document.body.appendChild(timerElement);
 
     timerInterval = setInterval(() => {
+        const message = redirectMessages[currentLang].redirecting.replace('{timer}', redirectTimer);
+        const buttonText = redirectMessages[currentLang].button;
+        
         timerElement.innerHTML = `
             <div style="display: flex; align-items: center; gap: 8px;">
                 <span>🏠</span>
-                <span>Redirigiendo en ${redirectTimer}s</span>
+                <span>${message}</span>
                 <button onclick="clearRedirect()" style="
                     background: none; 
                     border: none; 
@@ -33,7 +50,7 @@ function startRedirectTimer() {
                     cursor: pointer;
                     font-size: 1.2rem;
                     padding: 0 0 0 8px;
-                ">&times;</button>
+                " title="${buttonText}">&times;</button>
             </div>
         `;
         
@@ -50,36 +67,46 @@ function clearRedirect() {
     document.querySelector('[style*="bottom: 20px"]')?.remove();
 }
 
-// Modal functions (simplified version)
+// Enhanced modal function with bilingual content (reuses bilingual.js system)
 function showInfo(type) {
     const modal = document.getElementById('infoModal');
     const overlay = document.getElementById('modalOverlay');
     const title = document.getElementById('modalTitle');
     const body = document.getElementById('modalBody');
 
-    const content = {
-        about: {
-            title: 'Acerca del Proyecto',
-            body: `
-                <p><strong>WPlace Calculator Advanced Edition</strong></p>
-                <p>Calculadora de tiempo de recarga de píxeles para WPlace con tecnología de vanguardia.</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>⚡ Cálculos instantáneos</li>
-                    <li>🎯 Precisión absoluta</li>
-                    <li>🚀 Animaciones 60fps</li>
-                    <li>📱 Diseño responsivo</li>
-                    <li>🔒 Completamente privado</li>
-                </ul>
-                <p>Herramienta independiente no oficial para WPlace.</p>
-            `
+    if (window.bilingualSystem) {
+        const content = window.bilingualSystem.getModalContent(type);
+        if (content) {
+            title.textContent = content.title;
+            body.innerHTML = content.body;
+            overlay.classList.add('active');
         }
-    };
+    } else {
+        // Fallback content if bilingual system isn't loaded yet
+        const fallbackContent = {
+            about: {
+                title: 'Acerca del Proyecto / About the Project',
+                body: `
+                    <p><strong>WPlace Calculator Advanced Edition</strong></p>
+                    <p>Calculadora de tiempo de recarga de píxeles para WPlace / Pixel recharge time calculator for WPlace</p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>⚡ Cálculos instantáneos / Instant calculations</li>
+                        <li>🎯 Precisión absoluta / Absolute precision</li>
+                        <li>🚀 Animaciones 60fps / 60fps animations</li>
+                        <li>📱 Diseño responsivo / Responsive design</li>
+                        <li>🔒 Completamente privado / Completely private</li>
+                        <li>🌐 Soporte bilingüe / Bilingual support</li>
+                    </ul>
+                `
+            }
+        };
 
-    const info = content[type];
-    if (info) {
-        title.textContent = info.title;
-        body.innerHTML = info.body;
-        overlay.classList.add('active');
+        const info = fallbackContent[type];
+        if (info) {
+            title.textContent = info.title;
+            body.innerHTML = info.body;
+            overlay.classList.add('active');
+        }
     }
 }
 
@@ -111,14 +138,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Console Easter egg
+// Enhanced console Easter egg with bilingual support
 console.log(`
-⚡ WPlace Calculator - 404 Error
+⚡ WPlace Calculator - 404 Error / Error 404
 
-Parece que te has perdido en el espacio digital.
+${window.navigator.language.includes('es') ? 
+    'Parece que te has perdido en el espacio digital.' : 
+    'It seems you got lost in digital space.'}
 
-🔧 Enlaces útiles:
-• Inicio: ${window.location.origin}
+🔧 ${window.navigator.language.includes('es') ? 'Enlaces útiles:' : 'Useful links:'}
+• ${window.navigator.language.includes('es') ? 'Inicio:' : 'Home:'} ${window.location.origin}
 • GitHub: https://github.com/Gacha0826Tomy/wplace-calculadora
-• Reportar issue: https://github.com/Gacha0826Tomy/wplace-calculadora/issues
+• ${window.navigator.language.includes('es') ? 'Reportar issue:' : 'Report issue:'} https://github.com/Gacha0826Tomy/wplace-calculadora/issues
 `);
+
+// Wait for bilingual system to load, then apply initial language
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure bilingual system is loaded
+    setTimeout(() => {
+        if (window.bilingualSystem) {
+            // The bilingual system will handle language detection and application
+            console.log('🌐 Bilingual 404 page ready');
+        }
+    }, 100);
+});
