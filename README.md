@@ -1,9 +1,9 @@
-# ⚡ WPlace Calculator - Advanced Bilingual Edition - V. 1.2
+# ⚡ WPlace Calculator - Advanced Bilingual Edition
 
 <div align="center">
 
 ![WPlace Calculator](https://img.shields.io/badge/WPlace-Calculator-blue?style=for-the-badge&logo=lightning&logoColor=white)
-![Version](https://img.shields.io/badge/version-2.0.0-brightgreen?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2.0-brightgreen?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/languages-ES%20|%20EN-orange?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
 
