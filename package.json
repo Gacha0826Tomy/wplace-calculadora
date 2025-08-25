@@ -45,8 +45,7 @@
     "devDependencies": {
         "http-server": "^14.1.1",
         "live-server": "^1.2.2",
-        "lighthouse": "^11.4.0",
-        "html5validator": "^0.4.2"
+        "lighthouse": "^11.4.0"
     },
     "engines": {
         "node": ">=16.0.0",
