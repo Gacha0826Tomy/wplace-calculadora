@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | WPlace Calculator</title>
+    <meta name="description" content="La página que buscas no existe. Regresa a WPlace Calculator para calcular el tiempo de recarga de tus píxeles.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            
+            <div class="error-visual">
+                <span class="visual-element">🔍</span>
+                <span class="visual-element">❌</span>
+                <span class="visual-element">🤔</span>
+            </div>
+
+            <h1 class="error-title">Píxel no encontrado</h1>
+            
+            <p class="error-message">
+                Esta página se ha desvanecido en el vacío digital. 
+                Pero no te preocupes, puedes regresar a calcular tus píxeles 
+                en tiempo récord.
+            </p>
+
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">
+                    <span>⚡</span>
+                    Volver al Calculator
+                </a>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <span>↩️</span>
+                    Página Anterior
+                </a>
+            </div>
+
+            <div class="helpful-links">
+                <h3>Enlaces útiles</h3>
+                <div class="links-grid">
+                    <a href="/" class="link-item">
+                        <span class="link-icon">🏠</span>
+                        <div>
+                            <div>Inicio</div>
+                            <small style="opacity: 0.7;">Página principal</small>
+                        </div>
+                    </a>
+                    <a href="/?pixels=100" class="link-item">
+                        <span class="link-icon">🎯</span>
+                        <div>
+                            <div>Ejemplo</div>
+                            <small style="opacity: 0.7;">Calcular 100 píxeles</small>
+                        </div>
+                    </a>
+                    <a href="/#" class="link-item" onclick="showInfo('about')">
+                        <span class="link-icon">ℹ️</span>
+                        <div>
+                            <div>Acerca de</div>
+                            <small style="opacity: 0.7;">Información del proyecto</small>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Gacha0826Tomy/wplace-calculadora" class="link-item" target="_blank">
+                        <span class="link-icon">💻</span>
+                        <div>
+                            <div>GitHub</div>
+                            <small style="opacity: 0.7;">Código fuente</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal system (copied from main app) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="infoModal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Información</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="404.js"></script>
+</body>
+</html>
