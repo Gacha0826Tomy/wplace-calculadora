@@ -29,18 +29,18 @@
         "pwa"
     ],
     "author": {
-        "name": "Tu Nombre",
-        "email": "tu@email.com",
-        "url": "https://github.com/usuario"
+        "name": "Tomy Thompson Turner",
+        "email": "Gameplays0826Tomy@hotmail.com",
+        "url": "https://github.com/Gacha0826Tomy"
     },
     "license": "MIT",
     "homepage": "https://wplace-calculator.vercel.app",
     "repository": {
         "type": "git",
-        "url": "https://github.com/usuario/wplace-calculator.git"
+        "url": "https://github.com/Gacha0826Tomy/wplace-calculadora.git"
     },
     "bugs": {
-        "url": "https://github.com/usuario/wplace-calculator/issues"
+        "url": "https://github.com/Gacha0826Tomy/wplace-calculadora/issues"
     },
     "devDependencies": {
         "http-server": "^14.1.1",
