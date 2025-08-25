@@ -855,7 +855,7 @@ function showInfo(type) {
                         <li>Accesible para usuarios con discapacidades</li>
                     </ul>
                 </div>
-                <p><em>Proyecto educativo y de demostración técnica.</em></p>
+                <p><em>Creado y desarrollado por <a style="text-decoration: none; color: #842593;" href="https://github.com/Gacha0826Tomy" target="_blank" rel="noopener noreferrer">G0826Tomy</a>.</em></p>
             `
         }
     };
