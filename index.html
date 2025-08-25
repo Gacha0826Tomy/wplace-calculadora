@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPlace Calculator - Calculadora de Tiempo de Recarga de Píxeles</title>
+    <meta name="description" content="Calcula exactamente cuánto tiempo necesitas para recargar todos tus píxeles en WPlace. Herramienta precisa, rápida y gratuita.">
+    <meta name="keywords" content="WPlace, píxeles, calculadora, tiempo de recarga, herramienta, gaming">
+    <meta property="og:title" content="WPlace Calculator - Tiempo de Recarga de Píxeles">
+    <meta property="og:description" content="Herramienta definitiva para calcular el tiempo de recarga de píxeles en WPlace">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-badge">
+                <span class="badge-icon">⚡</span>
+                <span class="badge-text">INSTANT CALCULATION</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-main">WPlace</span>
+                <span class="title-sub">Calculator</span>
+            </h1>
+            <p class="hero-description">
+                Calcula el tiempo exacto de recarga de píxeles con precisión militar.
+                <span class="highlight">Cada píxel = 30 segundos</span>
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalCalculations">0</div>
+                    <div class="stat-label">Cálculos realizados</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <div class="stat-number">30s</div>
+                    <div class="stat-label">Por píxel</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Precisión</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="calculator-section">
+            <div class="calculator-container">
+                <div class="input-zone">
+                    <div class="input-header">
+                        <h2 class="input-title">Píxeles disponibles</h2>
+                        <div class="input-status" id="inputStatus">
+                            <div class="status-dot"></div>
+                            <span class="status-text">Esperando entrada...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-field">
+                        <div class="field-wrapper">
+                            <input 
+                                type="number" 
+                                id="pixelInput" 
+                                class="pixel-input" 
+                                placeholder="0"
+                                min="1"
+                                step="1"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                            <div class="input-glow"></div>
+                            <div class="field-suffix">
+                                <span class="suffix-text">píxeles</span>
+                                <div class="suffix-icon">🎯</div>
+                            </div>
+                        </div>
+                        <div class="field-hint">
+                            Tu límite máximo personal en WPlace (varía por usuario)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-zone" id="resultsZone">
+                    <div class="results-header">
+                        <h2 class="results-title">Tiempo de recarga completa</h2>
+                        <div class="results-badge" id="resultsBadge">
+                            <span class="badge-pulse"></span>
+                            <span class="badge-text">CALCULANDO...</span>
+                        </div>
+                    </div>
+
+                    <div class="time-display">
+                        <div class="time-primary" id="timePrimary">
+                            <div class="time-value">--:--:--</div>
+                            <div class="time-format">DÍAS:HORAS:MINUTOS</div>
+                        </div>
+                        
+                        <div class="time-breakdown">
+                            <div class="time-unit days">
+                                <div class="unit-value" id="daysValue">0</div>
+                                <div class="unit-label">Días</div>
+                                <div class="unit-bar">
+                                    <div class="unit-fill" id="daysFill"></div>
+                                </div>
+                            </div>
+                            <div class="time-unit hours">
+                                <div class="unit-value" id="hoursValue">0</div>
+                                <div class="unit-label">Horas</div>
+                                <div class="unit-bar">
+                                    <div class="unit-fill" id="hoursFill"></div>
+                                </div>
+                            </div>
+                            <div class="time-unit minutes">
+                                <div class="unit-value" id="minutesValue">0</div>
+                                <div class="unit-label">Minutos</div>
+                                <div class="unit-bar">
+                                    <div class="unit-fill" id="minutesFill"></div>
+                                </div>
+                            </div>
+                            <div class="time-unit seconds">
+                                <div class="unit-value" id="secondsValue">0</div>
+                                <div class="unit-label">Segundos</div>
+                                <div class="unit-bar">
+                                    <div class="unit-fill" id="secondsFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-panel" id="summaryPanel">
+                        <div class="summary-content">
+                            <div class="summary-icon">📊</div>
+                            <div class="summary-text" id="summaryText">
+                                Ingresa tu cantidad de píxeles para ver el análisis completo
+                            </div>
+                        </div>
+                        <div class="summary-details" id="summaryDetails">
+                            <div class="detail-item">
+                                <span class="detail-label">Total de segundos:</span>
+                                <span class="detail-value" id="totalSecondsDetail">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Equivalente en días:</span>
+                                <span class="detail-value" id="totalDaysDetail">0</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Píxeles por día:</span>
+                                <span class="detail-value" id="pixelsPerDayDetail">2,880</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card speed">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Cálculo Instantáneo</h3>
+                        <p class="card-description">Resultados en tiempo real con animaciones fluidas y precisión absoluta en cada número.</p>
+                        <div class="card-metric">
+                            <span class="metric-value">&lt;100ms</span>
+                            <span class="metric-label">Tiempo de respuesta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight-card precision">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Precisión Matemática</h3>
+                        <p class="card-description">Algoritmo optimizado que maneja desde 1 píxel hasta millones con exactitud científica.</p>
+                        <div class="card-metric">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Precisión garantizada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight-card analysis">
+                    <div class="card-icon">📈</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Análisis Avanzado</h3>
+                        <p class="card-description">Desglose completo con múltiples formatos y estadísticas detalladas para planificación estratégica.</p>
+                        <div class="card-metric">
+                            <span class="metric-value">4+</span>
+                            <span class="metric-label">Formatos de tiempo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">WPlace Calculator</span>
+                    </div>
+                    <p class="footer-description">
+                        Herramienta independiente de cálculo de tiempo de recarga para WPlace. 
+                        Desarrollada con precisión y optimizada para rendimiento.
+                    </p>
+                </div>
+                <div class="footer-stats" id="footerStats">
+                    <div class="footer-stat">
+                        <div class="stat-value" id="sessionCalculations">0</div>
+                        <div class="stat-name">Esta sesión</div>
+                    </div>
+                    <div class="footer-stat">
+                        <div class="stat-value" id="maxPixelsCalculated">0</div>
+                        <div class="stat-name">Máximo calculado</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WPlace Calculator - Herramienta no oficial</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link" onclick="showInfo('privacy')">Privacidad</a>
+                    <a href="#" class="footer-link" onclick="showInfo('about')">Acerca de</a>
+                    <a href="#" class="footer-link" onclick="showInfo('contact')">Contacto</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="infoModal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Información</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
